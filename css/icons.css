@@ -1,5 +1,5 @@
 .ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
-.ui-icon { width: 16px; height: 16px; background-image: url(/img/222222_256x240_icons_icons.png)/*{iconsContent}*/; }
+.ui-icon { width: 16px; height: 16px; background-image: url(../img/222222_256x240_icons_icons.png)/*{iconsContent}*/; }
 
 /* positioning */
 .ui-icon-carat-1-n { background-position: 0 0; }
