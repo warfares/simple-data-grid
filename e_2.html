@@ -83,7 +83,7 @@
         });
 
         this.pag.on('pageChange', function(p){
-            query(cacheSort, p * 5, 5);
+            query(cacheSort, (p - 1) * 5, 5);
         },this);
 
         //first call 
