@@ -1,0 +1,101 @@
+<html>
+<head>
+    <title>sample</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Quicksand" />
+    
+    <link rel="stylesheet" type="text/css" href="/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="/libs/tipsy/css/tipsy.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/simple-grid.css" />
+
+    <!-- lib -->
+    <script type="text/javascript" src="/libs/jquery-1.8.3.min.js" ></script>
+    <script type="text/javascript" src="/libs/underscore-min.js" ></script>
+    <script type="text/javascript" src="/libs/backbone-min.js" ></script>
+    <script type="text/javascript" src="/libs/tipsy/jquery.tipsy.js" ></script>
+
+    <!-- simple grid -->
+    <script type="text/javascript" src="/libs/simple-grid-min.js" ></script>
+</head>
+
+
+<body>
+<script>
+    $(document).ready(function(){
+
+        var cacheSort = "ReleaseYear";
+
+        var buildCover = function(v){
+            return '<center><img src="'+ v.SmallUrl +'"></center>'
+        };
+
+        var buildDescription = function (v, o){
+            var html = [];
+            html.push("<div style='font-size:13px;'>");
+            html.push("<b><span style='text-decoration:underline;'>" + "[" + o.ReleaseYear + "] - " + o.ShortName + "</span></b><br/>");
+            html.push("<span>"+ o.ShortSynopsis + + "</span>");
+            html.push("</div>");
+            return html.join('');
+        };
+
+        var grid = new App.view.Grid({
+            el:$('#grid'),
+            cm:[{ id:'BoxArt', name:'cover', width:100, render:buildCover},
+                { id:'Name', name:'description', sortable:true, width:300, render:buildDescription},
+                { id:'AverageRating', name:'rate', css:{textAlign:'center'}, width:150 }]
+        });
+
+        grid.on('sort',function(sort) {
+            var k = Object.keys(sort)[0];
+            var d = sort[k] == 1 ? 'desc' : 'asc';
+            cacheSort = "ReleaseYear "+ d; 
+            query(cacheSort, 0, 5);
+        },this);
+
+        var query  = function(orderby, skip, stop){
+            function cb(result) {
+                var data = result.d.results;
+                grid.setValues(data);
+                console.log(data);
+            };
+
+            var q = "http://odata.netflix.com/Catalog/Titles"
+            //+ "?$select=Name"
+            + "?$filter=(substringof('Star+Wars',Name)+and+BoxArt/SmallUrl+ne+null)"
+            + "&$orderby=" + orderby
+            + "&$skip=" + skip
+            + "&$top=" + stop
+            + "&$format=json"
+            + "&$inlinecount=allpages"
+            + "&$callback=?";
+
+            $.ajax({
+                dataType: 'jsonp',
+                url: q,
+                success: cb
+            });
+        };
+
+        //pagging toolbar.
+        this.pag = new App.view.PagingToolbar({
+            el:$('#paging'),
+            lastPage:5
+        });
+
+        this.pag.on('pageChange', function(p){
+            query(cacheSort, p * 5, 5);
+        },this);
+
+        //first call 
+        query(cacheSort, 0, 5);
+    });
+</script>
+
+<h1>Demo</h1>
+<br/>
+<div id="grid"></div>
+<br/>
+<div id="paging"></div>
+<br/>
+</body>
+</html>

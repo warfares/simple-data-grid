@@ -1,0 +1,49 @@
+body{
+	font-family: 'Quicksand', sans-serif;
+    width:700px;
+    border-style: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alpha-grid { 
+	border-spacing:0;
+	border-collapse:collapse;
+}
+.alpha-grid tr td{
+	border:1px solid #dadada;
+	cursor:pointer;
+	vertical-align:top;
+}
+.alpha-grid tr:hover { background: #f1f1f1; }
+
+.head{
+	background: #ffb260; /* Older browsers */
+	background: -moz-linear-gradient(top, #f6f6f6 0%, #eaeaea 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #f6f6f6 0%,#eaeaea 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #f6f6f6 0%,#eaeaea 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #f6f6f6 0%,#eaeaea 100%); /* IE10+ */
+	background: linear-gradient(top,  #f6f6f6 0%,#eaeaea 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbb', endColorstr='#ddd',GradientType=0 ); /* IE6-9 */
+	font-size:13px;
+	height:30px;
+}
+
+.sprite-board-paging{ background: url(/img/csg-4f3ace01ae0f7.png) no-repeat top left; }
+.sprite-board_paging-end{ background-position: 0 0; width: 10px; height: 7px; }
+.sprite-board_paging-first{ background-position: 0 -17px; width: 10px; height: 7px;}
+
+.sprite-board_paging-next{ background-position: 0 -34px; width: 6px; height: 7px; }
+.sprite-board_paging-prev{ background-position: 0 -51px; width: 6px; height: 7px; }
+
+.nsb-paging-btn {
+	margin:0 3px 0 3px;
+	cursor:pointer;
+}
+.ptb-current {
+    width:50px;
+    border:1px solid #ccc;
+    border-radius:4px;
+    background:#fff;
+}

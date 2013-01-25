@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>sample</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Quicksand" />
+
+    <link rel="stylesheet" type="text/css" href="/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="/libs/tipsy/css/tipsy.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/simple-grid.css" />
+
+    <!-- lib -->
+    <script type="text/javascript" src="/libs/jquery-1.8.3.min.js" ></script>
+    <script type="text/javascript" src="/libs/underscore-min.js" ></script>
+    <script type="text/javascript" src="/libs/backbone-min.js" ></script>
+    <script type="text/javascript" src="/libs/tipsy/jquery.tipsy.js" ></script>
+
+    <!-- simple grid -->
+    <script type="text/javascript" src="/libs/simple-grid-min.js" ></script>
+</head>
+
+
+<body>
+<script>
+
+    $(document).ready(function(){
+
+        // building dummy data.
+        var rand = function(from, to){
+            return Math.floor(Math.random() * (to - from + 1) + from);
+        };
+
+        var data = [];
+        var total = 1000;
+        var num = 10;
+        for(x=1;x<=total;x++){
+            var obj = {id:x,name:'Dummy_' + x ,date:'2010-01-01', genere:rand(0,1), status:'true'}
+            data.push(obj);
+        };
+
+        var genere = function(v){
+            var g = v == 1 ? 'male' : 'female';
+            return  '<center><img src="/img/'+ g +'.png" width="16px" height="16px" alt=""></center>';
+        };
+
+        var colCss = {
+            color:'000',
+            fontWeight:'bold',
+            backgroundColor:'C3C3E5',
+            paddingLeft:'2px'
+        };
+
+        this.grid = new App.view.Grid({
+            el:$('#grid'),
+            cm:[
+                { id:'id', name:'...', width:50, sortable:true, css:colCss, hcss:{backgroundColor:'443266'}},
+                { id:'name', name:'name', width:100, sortable:true, css:{color:'999'}},
+                { id:'date', name:'birthday', width:150, sortable:true},
+                { id:'genere', name:'genere', width:100, sortable:true, render:genere },
+                { id:'status', name:'status', width:80, sortable:true }
+            ],
+            sort:{'play':-1}
+        });
+
+        this.grid.on('rowclick',function(e){
+            console.log(e.name);
+        }, this);
+
+        this.grid.on('sort',function(sort) {
+            var k = Object.keys(sort)[0];
+            console.log(k);
+            data = data.sort(function(a, b){
+                var s = (a[k] < b[k]) ? -1 : 1;
+                return sort[k] == 1 ? s : s * -1;
+            });
+            this.pag.setPage(1);
+        },this);
+        this.grid.setValues(data.slice(0,num));
+
+        //pagging toolbar.
+        this.pag = new App.view.PagingToolbar({
+            el:$('#paging'),
+            lastPage:total/num
+        });
+
+        this.pag.on('pageChange', function(p){
+            this.grid.setValues(data.slice(num * (p-1),num * p));
+        },this);
+    });
+
+</script>
+
+<h1>Demo</h1>
+<br/>
+<div id="grid"></div>
+<br/>
+<div id="paging"></div>
+<br/>
+</body>
+</html>
