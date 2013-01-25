@@ -3,11 +3,12 @@ A very simple HTML/JS Grid.
 Live Sample
 ==
 <b>JS Array</b>
+<br/>
 http://warfares.github.com/simple-grid/e_1.html
 
-<b>OData<b/> the force be with you.
+<b>OData</b> the force be with you...
+<br/>
 http://warfares.github.com/simple-grid/e_2.html
-
 
 Dependecies
 == 
@@ -17,6 +18,6 @@ Dependecies
 Usage
 ==
 
-TODO: documentation.
+TODO: add grid Documentation.
 
 * Note : only tested in Chrome & FireFox.
