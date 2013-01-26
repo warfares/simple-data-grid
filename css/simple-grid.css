@@ -11,6 +11,12 @@ body{
 	border-collapse:collapse;
 }
 
+.alpha-grid tr {
+    transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s;
+    -webkit-transition: background-color 0.5s;
+}
+
 .alpha-grid tr td{
 	border:1px solid #dadada;
 	cursor:pointer;
@@ -22,7 +28,7 @@ body{
 }
 
 .alpha-grid tr:hover { 
-    background: #f1f1f1; 
+    background: #ffffcc; 
 }
 
 .head{
