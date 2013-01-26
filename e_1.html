@@ -42,17 +42,23 @@
             return  '<center><img src="img/'+ g +'.png" width="16px" height="16px" alt=""></center>';
         };
 
-        var colCss = {
+        var css = {
             color:'000',
             fontWeight:'bold',
-            backgroundColor:'C3C3E5',
-            paddingLeft:'2px'
+            paddingLeft:'2px',
         };
+        hcss = {
+            color:'fafafa',
+            background:'-webkit-linear-gradient(top,  #8876aa 0%,#443266 100%)',
+            border:'1px #443266 solid'
+        };
+        if($.browser.mozilla)
+            hcss['background'] = '-moz-linear-gradient(top, #8876aa 0%, #443266 100%)'
 
         this.grid = new App.view.Grid({
             el:$('#grid'),
             cm:[
-                { id:'id', name:'...', width:50, sortable:true, css:colCss, hcss:{backgroundColor:'443266'}},
+                { id:'id', name:'N&deg;', width:50, sortable:true, css:css, hcss:hcss},
                 { id:'name', name:'name', width:100, sortable:true, css:{color:'999'}},
                 { id:'date', name:'birthday', width:150, sortable:true},
                 { id:'genere', name:'genere', width:100, sortable:true, render:genere },
@@ -92,7 +98,6 @@
 <h1>Demo</h1>
 <br/>
 <div id="grid"></div>
-<br/>
 <div id="paging"></div>
 <br/>
 </body>

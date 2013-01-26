@@ -6,7 +6,7 @@ body{
     margin-right: auto;
 }
 
-.alpha-grid { 
+.alpha-grid {
 	border-spacing:0;
 	border-collapse:collapse;
 }
@@ -21,7 +21,9 @@ body{
     height:30px;
 }
 
-.alpha-grid tr:hover { background: #f1f1f1; }
+.alpha-grid tr:hover { 
+    background: #f1f1f1; 
+}
 
 .head{
 	background: #ffb260; /* Older browsers */
