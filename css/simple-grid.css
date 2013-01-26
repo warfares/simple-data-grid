@@ -27,7 +27,7 @@ body{
     height:30px;
 }
 
-.alpha-grid tr:hover { 
+.alpha-grid tbody tr:hover { 
     background: #ffffcc; 
 }
 
