@@ -45,7 +45,7 @@ grid.setValues(my_data);
 
 Methods 
 ==
-* setData(data) // data array of objects.
+* **setData(data)** // data -> array of JS objects.
 
 Events
 ==
