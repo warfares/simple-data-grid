@@ -52,7 +52,7 @@ Events
 * **rowclick** -> fc(ojb) // the complete row obj
 * **sort** -> fc(dir) // ex: {Name:-1}
 
-Colum model properties
+Column model properties
 ==
 
 - **id** [string] - Obj property
