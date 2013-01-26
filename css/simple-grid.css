@@ -14,7 +14,6 @@ body{
 .alpha-grid tr td{
 	border:1px solid #dadada;
 	cursor:pointer;
-	vertical-align:top;
 }
 
 .alpha-grid tr th{
