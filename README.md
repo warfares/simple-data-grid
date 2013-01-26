@@ -17,7 +17,30 @@ Dependecies
 
 Usage
 ==
+<pre>
 
+var grid = new App.view.Grid({
+    el:$('#grid'),
+    cm:[
+        { id:'id', name:'...', width:50, sortable:true},
+        { id:'name', name:'name', width:100, sortable:true, css:{color:'999'}},
+        { id:'date', name:'birthday', width:150, sortable:true},
+        { id:'genere', name:'genere', width:100, sortable:true, render:function(d,o){ return d }},
+        { id:'status', name:'status', width:80}
+    ]
+});
+
+grid.on('rowclick',function(o){
+    console.log(o.name);
+}, this);
+
+grid.on('sort',function(sort) {
+    // do some magic sort and reload your data.
+},this);
+
+grid.setValues(my_data);
+
+</pre>
 
 
 Methods 
