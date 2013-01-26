@@ -26,20 +26,20 @@ Methods
 
 Events
 ==
-* rowclick -> fc(ojb) // the complete row obj
-* sort -> fc(dir) // ex: {Name:-1}
+* **rowclick** -> fc(ojb) // the complete row obj
+* **sort** -> fc(dir) // ex: {Name:-1}
 
 Colum model properties
 ==
 
-* id <string> // name of the obj propery
-* name <stirng> // display header name 
-* width <int> // column width 
-* sortable <boolean>// enable sort behavior 
-* css <obj> // column css (data) -> jquery obj notation
-* hcss <obj> // column css (header) -> jquery obj notation
-* cls <string> // column class (data)
-* hcls <string> // column class (header)
-* render <function> // custom data render.. -> func(d,o){} should return HTML // d -> columd data, o -> complete obj
+- **id** [string] - Obj property
+* **name** [stirng] - Display header name 
+* **width** [int] - Width 
+* **sortable** [bool] - Enable sort behavior 
+* **css** [obj] - Column css (data) -> jquery obj notation
+* **hcss** [obj] - Column css (header) -> jquery obj notation
+* **cls** [string] - Column class (data)
+* **hcls** [string] - Column class (header)
+* **render** [function] - Custom data render.. -> func(d,o){} should return HTML // d -> column data, o -> complete obj
 
 * Note : only tested in Chrome & FireFox.
