@@ -29,11 +29,26 @@
             return Math.floor(Math.random() * (to - from + 1) + from);
         };
 
+        function randDate(from, to) {
+            var date =  new Date(from.getTime() 
+                + Math.random() 
+                * (to.getTime() - from.getTime())
+            )
+            return date.getFullYear() + '-'
+                + date.getMonth() + '-' 
+                + date.getDay();
+        };
+
         var data = [];
         var total = 1000;
         var num = 10;
         for(x=1;x<=total;x++){
-            var obj = {id:x,name:'Dummy_' + x ,date:'2010-01-01', genere:rand(0,1), status:'true'}
+            var obj = {
+                id:x,name:'Dummy_' + x, 
+                date:randDate(new Date(1900, 0, 1), new Date()), 
+                genere:rand(0,1), 
+                status:rand(0,1) ? 'true': 'false'
+            }
             data.push(obj);
         };
 
@@ -64,7 +79,7 @@
                 { id:'genere', name:'genere', width:100, sortable:true, render:genere },
                 { id:'status', name:'status', width:80, sortable:true }
             ],
-            sort:{'play':-1}
+            sort:{'id':-1}
         });
 
         this.grid.on('rowclick',function(e){
