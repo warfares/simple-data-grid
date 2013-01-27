@@ -11,15 +11,16 @@ body{
 	border-collapse:collapse;
 }
 
-.alpha-grid tr {
-    transition: background-color 0.5s;
-    -moz-transition: background-color 0.5s;
-    -webkit-transition: background-color 0.5s;
-}
-
-.alpha-grid tr td{
-	border:1px solid #dadada;
-	cursor:pointer;
+.alpha-grid thead {
+    background: #ffb260; /* Older browsers */
+    background: -moz-linear-gradient(top, #fafafa 0%, #e1e1e1 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #fafafa 0%,#e1e1e1 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #fafafa 0%,#e1e1e1 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #fafafa 0%,#e1e1e1 100%); /* IE10+ */
+    background: linear-gradient(top,  #fafafa 0%,#e1e1e1 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbb', endColorstr='#ddd',GradientType=0 ); /* IE6-9 */
+    font-size:13px;
 }
 
 .alpha-grid tr th{
@@ -27,22 +28,23 @@ body{
     height:30px;
 }
 
+.alpha-grid tr td{
+	border:1px solid #dadada;
+	cursor:pointer;
+}
+
 .alpha-grid tbody tr:hover { 
     background: #ffffcc; 
 }
 
-.head{
-	background: #ffb260; /* Older browsers */
-	background: -moz-linear-gradient(top, #fafafa 0%, #e1e1e1 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #fafafa 0%,#e1e1e1 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #fafafa 0%,#e1e1e1 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #fafafa 0%,#e1e1e1 100%); /* IE10+ */
-	background: linear-gradient(top,  #fafafa 0%,#e1e1e1 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbb', endColorstr='#ddd',GradientType=0 ); /* IE6-9 */
-	font-size:13px;
+.alpha-grid tbody tr {
+    transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s;
+    -webkit-transition: background-color 0.5s;
 }
 
+
+/* paging toolbar */
 .sprite-board-paging{ background: url(../img/csg-4f3ace01ae0f7.png) no-repeat top left; }
 .sprite-board_paging-end{ background-position: 0 0; width: 10px; height: 7px; }
 .sprite-board_paging-first{ background-position: 0 -17px; width: 10px; height: 7px;}
