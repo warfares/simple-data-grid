@@ -6,7 +6,7 @@ Live Sample
 <br/>
 http://warfares.github.com/simple-grid/e_1.html
 
-<b>remote data source</b>... and the force be with you... 
+<b>Remote datasource</b>... and the force be with you... 
 <br/>
 http://warfares.github.com/simple-grid/e_2.html
 
