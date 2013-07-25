@@ -6,8 +6,7 @@ Live Sample
 <br/>
 http://warfares.github.com/simple-grid/e_1.html
 
-<b>OData</b> the force be with you... 
-(NOTE: deprecated...: NetFlix OData service is no longer available.., TODO: find another remote data source)
+<b>remote data source</b>... and the force be with you... 
 <br/>
 http://warfares.github.com/simple-grid/e_2.html
 
