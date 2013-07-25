@@ -23,51 +23,45 @@
 <script>
     $(document).ready(function(){
 
-        var cacheSort = "ReleaseYear";
-
-        var buildCover = function(v){
-            return '<center><img src="'+ v.SmallUrl +'"></center>'
+        var buildCover = function(v, o){
+            return '<center><img width="61" height="91" src="'+ o.posters.thumbnail +'"></center>'
         };
 
         var buildDescription = function (v, o){
+
+            o.critics_consensus = o.critics_consensus || "";
+
             var html = [];
             html.push("<div style='font-size:13px;'>");
-            html.push("<b><span style='text-decoration:underline;'>" + "[" + o.ReleaseYear + "] - " + o.ShortName + "</span></b><br/>");
-            html.push("<span>"+ o.ShortSynopsis + + "</span>");
+            html.push("<b><span style='text-decoration:underline;'>" + "[" + o.year + "] - " + o.title + "</span></b><br/>");
+            html.push("<span>"+ o.critics_consensus + "</span>");
             html.push("</div>");
             return html.join('');
         };
 
         var grid = new App.view.Grid({
             el:$('#grid'),
-            cm:[{ id:'BoxArt', name:'cover', width:100, render:buildCover},
-                { id:'Name', name:'description', sortable:true, width:300, render:buildDescription},
-                { id:'AverageRating', name:'rate', css:{textAlign:'center'}, width:150 }]
+            cm:[{ id:'posters', name:'cover', width:100, render:buildCover},
+                { id:'title', name:'description', width:300, render:buildDescription},
+                { id:'mpaa_rating', name:'Mpaa Rating', css:{textAlign:'center'}, width:150 }]
         });
 
-        grid.on('sort',function(sort) {
-            var k = Object.keys(sort)[0];
-            var d = sort[k] == 1 ? 'desc' : 'asc';
-            cacheSort = "ReleaseYear "+ d; 
-            query(cacheSort, 0, 5);
-        },this);
-
-        var query  = function(orderby, skip, stop){
+        var query  = function(page){
             function cb(result) {
-                var data = result.d.results;
+                var data = result.movies;
                 grid.setValues(data);
-                console.log(data);
             };
 
-            var q = "http://odata.netflix.com/Catalog/Titles"
-            //+ "?$select=Name"
-            + "?$filter=(substringof('Star+Wars',Name)+and+BoxArt/SmallUrl+ne+null)"
-            + "&$orderby=" + orderby
-            + "&$skip=" + skip
-            + "&$top=" + stop
-            + "&$format=json"
-            + "&$inlinecount=allpages"
-            + "&$callback=?";
+
+            var movie = "starwar";
+            var key = "w697y3tvc9n4arza5vcnx9zt";
+            var page_limit = 5;
+
+            var q = "http://api.rottentomatoes.com/api/public/v1.0/movies.json"
+                + "?apikey=" + key
+                + "&q=" + movie
+                + "&page_limit=" + page_limit
+                + "&page=" + page; 
 
             $.ajax({
                 dataType: 'jsonp',
@@ -79,15 +73,15 @@
         //pagging toolbar.
         this.pag = new App.view.PagingToolbar({
             el:$('#paging'),
-            lastPage:5
+            lastPage: 4 //TODO change this magic number
         });
 
         this.pag.on('pageChange', function(p){
-            query(cacheSort, (p - 1) * 5, 5);
+            query(p);
         },this);
 
-        //first call 
-        query(cacheSort, 0, 5);
+        //first call
+        query(1);
     });
 </script>
 
