@@ -1,4 +1,4 @@
-A very, very very simple HTML/JS Grid.
+A very, very very simple HTML/JS data Grid.
 
 Live Sample
 ==
