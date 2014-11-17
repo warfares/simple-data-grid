@@ -4,11 +4,11 @@ Live Sample
 ==
 <b>JS Array</b>
 <br/>
-http://warfares.github.com/simple-grid/e_1.html
+http://warfares.github.com/simple-data-grid/e_1.html
 
 <b>Remote datasource</b>... and the force be with you... 
 <br/>
-http://warfares.github.com/simple-grid/e_2.html
+http://warfares.github.com/simple-data-grid/e_2.html
 
 Dependecies
 == 
